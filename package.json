@@ -1,0 +1,10 @@
+{
+  "name": "PhaseWebGLTest",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "./node_modules/.bin/http-server"
+  },
+  "dependencies": {
+    "body-scroll-lock": "^2.6.4"
+  }
+}
