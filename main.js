@@ -5,11 +5,11 @@ import UI from './lib/ui/UI.js';
 
 import * as vec2 from './lib/gl-matrix/vec2.js';
 
-import Node2D from './lib/engine/2d/Node2D.js';
 import glUtils from './lib/engine/webgl_utils.js';
 import DrawInfo from './lib/engine/DrawInfo.js';
 import * as primitives from './lib/engine/geometry/primitives.js';
 
+import Shape2D from './lib/engine/geometry/Shape2D.js';
 import Rectangle from './lib/engine/geometry/Rectangle.js';
 import Triangle from './lib/engine/geometry/Triangle.js';
 
@@ -59,21 +59,21 @@ function connectUIEvents(ui, engine){
 function createContent(images){
    const content = [];
 
-   const fNode = new Node2D();
-   fNode.drawInfo = new DrawInfo({mesh: primitives.letterF, solidColor: [1, 0, 0.5, 1]});
-   content.push(fNode);
+   /*
+   const f = new Shape2D(primitives.letterF);
+   f.addFill({type: 'SOLID', color: [1, 0, 0.5, 1]});
+   content.push(f);
 
-   const fNode2 = new Node2D();
-   fNode2.drawInfo = new DrawInfo({mesh: primitives.letterF, solidColor: [0, 1, 0.5, 1]});
-   fNode2.transform.translation = [512, 320];
-   content.push(fNode2);
+   const f2 = new Shape2D(primitives.letterF);
+   f2.addFill({type: 'SOLID', color: [0, 1, 0.5, 1]});
+   f2.setDimensions({x:512, y:320});
+   content.push(f2);
 
-   const fNode3 = new Node2D();
-   fNode3.drawInfo = new DrawInfo({mesh: primitives.letterF, solidColor: [0.5, 0, 1, 1]});
-   fNode3.transform.translation = [512, 320];
-   fNode3.transform.rotation = 180;
-   content.push(fNode3);
-
+   const f3 = new Shape2D(primitives.letterF);
+   f3.addFill({type: 'SOLID', color: [0.5, 0, 1, 1]});
+   f3.transform.translation = [512, 320];
+   f3.transform.rotation = 180;
+   content.push(f3);
 
    const rect = new Rectangle();
    rect.setDimensions({x: 600, y: 100, width: 300, height: 200});
@@ -91,7 +91,13 @@ function createContent(images){
    triangle.addFill({type:'SOLID', color:[1, 0, 1, 1]});
    triangle.addFill({type:'SOLID', color:[0.5, 1, 0, 0.5]});
    //rect.addFill({type:'IMAGE', image: images[0]});
-   content.push(triangle);
+   content.push(triangle);*/
+
+   const rect2 = new Rectangle();
+   rect2.setDimensions({x: 650, y: 400, width: 300, height: 200});
+   rect2.addFill({type:'SOLID', color:[0.7, 0.7, 0.7, 1]});
+   rect2.addStroke({type:'SOLID', color:[1, 0, 0, 1]});
+   content.push(rect2);
 
    return content;
 }

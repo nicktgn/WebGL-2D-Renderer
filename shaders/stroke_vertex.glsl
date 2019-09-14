@@ -1,45 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-   <title></title>
-</head>
-<body>
-   <canvas id="canvas" width="1024" height="640"></canvas>
-
-   <div id="uiContainer">
-     <div id="ui">
-       <div id="x"></div>
-       <div id="y"></div>
-       <div id="angle"></div>
-       <div id="scaleX"></div>
-       <div id="scaleY"></div>
-     </div>
-   </div>
-
-   <script id="2d-vertex-shader" type="notjs">
-attribute vec2 a_position;
-
-uniform mat3 u_model;
-uniform mat3 u_view;
-uniform mat3 u_projection;
-
-void main() {
-   mat3 pvm = u_projection * u_view * u_model;
-   gl_Position = vec4((pvm * vec3(a_position, 1)).xy, 0, 1);
-}
-   </script>
-   <script id="2d-fragment-shader" type="notjs">
-precision mediump float;
-
-uniform vec4 u_color;
-
-void main() {
-   gl_FragColor = u_color;
-}
-   </script>
-
-<!-------------------------------------->
-   <script id="stroke-vertex-shader" type="notjs">
 attribute vec2 a_position;
 attribute float a_direction; 
 attribute vec2 a_next;
@@ -113,21 +71,4 @@ void main() {
 
    gl_Position = vec4((pv * vec3(shifted, 1)).xy, 0, 1);
    gl_PointSize = 1.0;
-}                                              
-   </script>
-
-   <!--
-   for most samples webgl-utils only provides shader compiling/linking and
-   canvas resizing because why clutter the examples with code that's the same in every sample.
-   See http://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html
-   and http://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
-   for webgl-utils, m3, m4, and webgl-lessons-ui.
-   -->
-
-   <!--
-   <script type="text/javascript" src="https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js"></script>
-   <script type="text/javascript" src="https://webglfundamentals.org/webgl/resources/webgl-utils.js"></script>
-   -->
-   <script type="module" src="main.js"></script>
-</body>
-</html>
+}            
