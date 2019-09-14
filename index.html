@@ -50,8 +50,8 @@ uniform mat3 u_view;
 uniform mat3 u_projection;
 
 uniform float u_aspect;
-uniform float u_thickness;
-uniform int u_miter;
+uniform float u_strokeWidth;
+uniform int u_strokeMiter;
 
 void main() {
    vec2 aspectVec = vec2(u_aspect, 1.0);
@@ -60,7 +60,7 @@ void main() {
    vec2 previousWorld = (u_model * vec3(a_previous, 1)).xy;
    vec2 nextWorld = (u_model * vec3(a_next, 1)).xy;
 
-   float len = u_thickness;
+   float len = u_strokeWidth;
    float orientation = a_direction;
    float d = 1.0;
 
@@ -74,32 +74,22 @@ void main() {
       dir = normalize(currentWorld - previousWorld);
    }
    //somewhere in middle, needs a join
-   /*
    else{
       //get directions from (C - B) and (B - A)
-      vec2 dirA = normalize((a_position - a_previous));
-      if (u_miter == 1) {
-         vec2 dirB = normalize((a_next - a_position));
+      vec2 dirA = normalize((currentWorld - previousWorld));
+      if (u_strokeMiter == 1) {
+         vec2 dirB = normalize((nextWorld - currentWorld));
          //now compute the miter join normal and length
          vec2 tangent = normalize(dirA + dirB);
          vec2 perp = vec2(-dirA.y, dirA.x);
          vec2 miter = vec2(-tangent.y, tangent.x);
          dir = tangent;
-         //len = u_thickness / dot(miter, perp);
-         d = dot(miter, perp);
+         len = u_strokeWidth / dot(miter, perp);
+         //d = dot(miter, perp);
       } else {
          dir = dirA;
       }
-   }*/
-   /*
-   vec2 normal = vec2(-dir.y, dir.x);
-   normal *= len / 2.0; 
-   
-   //normal.x /= u_aspect;
-
-   vec2 offset = normal * orientation;
-   vec2 shifted = currentWorld + offset;
-   */
+   }
   
    vec2 normal = vec2(-dir.y, dir.x);
 
@@ -109,11 +99,9 @@ void main() {
 
    mat3 pv = u_projection * u_view;
 
-   //mat3 pvm = u_projection * u_view * u_model;
-
    gl_Position = vec4((pv * vec3(shifted, 1)).xy, 0, 1);
    gl_PointSize = 1.0;
-}                                              
+}                                                         
    </script>
 
    <!--

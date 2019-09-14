@@ -59,7 +59,6 @@ function connectUIEvents(ui, engine){
 function createContent(images){
    const content = [];
 
-   /*
    const f = new Shape2D(primitives.letterF);
    f.addFill({type: 'SOLID', color: [1, 0, 0.5, 1]});
    content.push(f);
@@ -91,7 +90,7 @@ function createContent(images){
    triangle.addFill({type:'SOLID', color:[1, 0, 1, 1]});
    triangle.addFill({type:'SOLID', color:[0.5, 1, 0, 0.5]});
    //rect.addFill({type:'IMAGE', image: images[0]});
-   content.push(triangle);*/
+   content.push(triangle);
 
    const rect2 = new Rectangle();
    rect2.setDimensions({x: 650, y: 400, width: 300, height: 200});
