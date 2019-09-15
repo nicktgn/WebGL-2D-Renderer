@@ -28,7 +28,6 @@ function main(){
    }
 
    connectUIEvents(ui, engine);
-   
 
    addContent(engine, createContent, [
       'resources/webgl_logo1.png',
@@ -96,7 +95,15 @@ function createContent(images){
    rect2.setDimensions({x: 650, y: 400, width: 300, height: 200});
    rect2.addFill({type:'SOLID', color:[0.7, 0.7, 0.7, 1]});
    rect2.addStroke({type:'SOLID', color:[1, 0, 0, 1]});
+   rect2.setStrokeWidth(5);
+   rect2.setStrokePosition('OUTSIDE');
    content.push(rect2);
+
+   // for checking stroke positions
+   const rect3 = new Rectangle();
+   rect3.setDimensions({x: 580, y:400, width: 50, height: 200});
+   rect3.addFill({type:'SOLID', color:[0.7, 0.7, 0.7, 1]});
+   content.push(rect3);
 
    return content;
 }

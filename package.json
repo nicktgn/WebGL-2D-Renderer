@@ -5,6 +5,7 @@
     "start": "./node_modules/.bin/http-server"
   },
   "dependencies": {
-    "body-scroll-lock": "^2.6.4"
+    "body-scroll-lock": "^2.6.4",
+    "http-server": "^0.11.1"
   }
 }

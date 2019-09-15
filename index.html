@@ -52,6 +52,7 @@ uniform mat3 u_projection;
 uniform float u_aspect;
 uniform float u_strokeWidth;
 uniform int u_strokeMiter;
+uniform int u_strokePosition;
 
 void main() {
    vec2 aspectVec = vec2(u_aspect, 1.0);
@@ -93,15 +94,28 @@ void main() {
   
    vec2 normal = vec2(-dir.y, dir.x);
 
-   //vec2 shifted = currentWorld + vec2(0, len/2.0 * orientation);
-   vec2 offset = normal * len/2.0 * orientation;
+   float factor;
+   // center
+   if (u_strokePosition == 0){
+      factor = len/2.0 * orientation;
+   }
+   // outside
+   else if(u_strokePosition > 0){
+      factor = min(0.0, float(len * orientation));
+   }
+   // inside
+   else{
+      factor = max(0.0, float(len * orientation));
+   } 
+
+   vec2 offset = normal * factor;
    vec2 shifted = currentWorld + offset;
 
    mat3 pv = u_projection * u_view;
 
    gl_Position = vec4((pv * vec3(shifted, 1)).xy, 0, 1);
    gl_PointSize = 1.0;
-}                                                         
+}                                                              
    </script>
 
    <!--

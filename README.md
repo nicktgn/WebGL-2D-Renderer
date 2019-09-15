@@ -25,8 +25,16 @@
 
 ## USAGE:
 
-See `main.js`
+Run:
 
+```bash
+npm install
+npm start 
+```
+Then open the browser at [http://127.0.0.1:8080](http://127.0.0.1:8080)
+
+
+For API usage please see `main.js` file.
 
 ## API:
 
@@ -81,6 +89,10 @@ See `main.js`
    - **setStrokeWidth(width)**
 
    sets the width of the stroke line
+
+   - **setStrokePosition(position)**
+
+   sets the stroke displacement relative to the edges of the shape. `position` can be `CENTER`, `INSIDE` or `OUTSIDE`.
 
 ### **lib/engine/geometry/Rectangle**
 
