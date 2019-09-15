@@ -96,9 +96,9 @@ For API usage please see `main.js` file.
 
 ### **lib/engine/geometry/Rectangle**
 
-   subclass of `Shape2D` drawing the rectangle
+   subclass of `Shape2D` for drawing rectangles
 
 ### **lib/engine/geometry/Triangle**
 
-   subclass of `Shape2D` drawing the rectangle
+   subclass of `Shape2D` for drawing triangles
 
