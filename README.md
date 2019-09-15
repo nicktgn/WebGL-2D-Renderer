@@ -12,6 +12,7 @@
       - [x] `setDimensions()` to set position and size of the shape
       - [x] `addStroke()` with `SOLID` fill
       - [x] `setStrokeWidth()`
+      - [x] `setStrokePosition()`
       - [x] Multiple fills are supported (all currently use multiply blend mode)
 
 ## TODO:
@@ -19,7 +20,6 @@
    - [ ] Add tests
    - [ ] Add webback for bundling
    - [ ] `IMAGE` mode for strokes
-   - [ ] `setStrokePosition()`
    - [ ] Round corners
 
 
