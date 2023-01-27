@@ -1,4 +1,4 @@
-# WebGL 2d Renderer Test 
+# WebGL 2d Renderer
 
 ## Features:
    
